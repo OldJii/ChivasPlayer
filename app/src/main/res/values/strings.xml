@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ChivasPlayer</string>
+
+    <string name="prime_title">视频内核</string>
+    <string name="prime_normal_page">普通视频播放器</string>
+</resources>
