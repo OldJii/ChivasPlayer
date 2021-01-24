@@ -1,72 +1,72 @@
-package com.example.videoplayer.player;
+package com.example.videoplayer.Wrapper;
 
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.AttributeSet;
-import android.widget.FrameLayout;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import com.example.videokernel.abstractive.AbstractVideoPlayer;
-import com.example.videokernel.abstractive.VideoPlayerListener;
-import com.example.videokernel.factory.PlayerFactory;
+import com.example.videoplayer.controller.IVideoController;
+import com.example.videoplayer.player.IVideoPlayer;
 
 /**
  * Created by OldJii
- * on 1/24/21
+ * on 1/25/21
+ *
+ * 连接播放器接口IVideoPlayer与控件层接口IVideoController
  */
-public class VideoPlayer<T extends AbstractVideoPlayer> extends FrameLayout implements IVideoPlayer, VideoPlayerListener {
-
-    private Context mContext;
-
-    // 播放器
-    protected T mMediaPlayer;
-
-    // 播放器工厂
-    protected PlayerFactory<T> mPlayerFactory;
-
-
-
-    public VideoPlayer(@NonNull Context context) {
-        this(context, null);
-    }
-
-    public VideoPlayer(@NonNull Context context, @Nullable AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public VideoPlayer(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
-    /*----------------------------VideoPlayerListener----------------------------*/
+public class ControlWrapper implements IVideoPlayer, IVideoController {
     @Override
-    public void onInfo(int what, int extra) {
+    public void show() {
 
     }
 
     @Override
-    public void onPrepared() {
+    public void hide() {
 
     }
 
     @Override
-    public void onCompletion() {
+    public boolean isShowing() {
+        return false;
+    }
+
+    @Override
+    public void startFadeOut() {
 
     }
 
     @Override
-    public void onError(int type, String error) {
+    public void stopFadeOut() {
 
     }
 
     @Override
-    public void onVideoSizeChanged(int width, int height) {
+    public void setLocked(boolean locked) {
 
     }
 
-    /*-------------------------------IVideoPlayer-------------------------------*/
+    @Override
+    public boolean isLocked() {
+        return false;
+    }
+
+    @Override
+    public void startProgress() {
+
+    }
+
+    @Override
+    public void stopProgress() {
+
+    }
+
+    @Override
+    public boolean hasCutout() {
+        return false;
+    }
+
+    @Override
+    public int getCutoutHeight() {
+        return 0;
+    }
+
     @Override
     public void start() {
 
@@ -165,6 +165,11 @@ public class VideoPlayer<T extends AbstractVideoPlayer> extends FrameLayout impl
     @Override
     public int[] getVideoSize() {
         return new int[0];
+    }
+
+    @Override
+    public void setRotation(float rotation) {
+
     }
 
     @Override
